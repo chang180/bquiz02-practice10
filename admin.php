@@ -1,4 +1,6 @@
-﻿<?php include_once "base.php"; ?>
+﻿<?php include_once "base.php"; 
+if(empty($_SESSION['login'])) to("index.php");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,11 +26,11 @@
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
+				<a class="blo" href="?do=admin">帳號管理</a>
 				<a class="blo" href="?do=po">分類網誌</a>
-				<a class="blo" href="?do=news">最新文章</a>
-				<a class="blo" href="?do=pop">人氣文章</a>
-				<a class="blo" href="?do=know">講座訊息</a>
-				<a class="blo" href="?do=que">問卷調查</a>
+				<a class="blo" href="?do=news">最新文章管理</a>
+				<a class="blo" href="?do=know">講座管理</a>
+				<a class="blo" href="?do=que">問卷管理</a>
 			</div>
 			<div class="hal" id="main">
 				<div>
@@ -59,8 +61,8 @@
 					<div class="">
 						<?php
 						$do = $_GET['do'] ?? "main";
-						$file = "front/" . $do . ".php";
-						include file_exists($file) ? $file : "front/main.php";
+						$file = "backend/" . $do . ".php";
+						include file_exists($file) ? $file : "backend/main.php";
 						?>
 					</div>
 				</div>

@@ -71,3 +71,17 @@ $News = new DB('news');
 $Que = new DB('que');
 $Admin = new DB('admin');
 $Log = new DB('log');
+$Total = new DB('total');
+
+if (empty($Total->find(['date' => date("Y-m-d")]))) {
+    $_SESSION['visited'] = 1;
+    $Total->save(['total' => 1,'date'=>date("Y-m-d")]);
+}
+$today = $Total->find(['date' => date("Y-m-d")]);
+if (empty($_SESSION['login'])) {
+    $today['total']++;
+    $_SESSION['visited'] = 1;
+    $Total->save($today);
+    $today = $Total->find(['date' => date("Y-m-d")]);
+}
+$total = $Total->q("SELECT SUM(total) from total ")[0][0];
