@@ -33,14 +33,14 @@
                 $start++;
             } ?>
         </table>
+        <?php
+        echo "<a href='?do=news&p=$prev'> < </a>";
+        for ($i = 1; $i <= $pages; $i++) {
+            $font = ($now == $i) ? "32px" : "20px";
+            echo "<a href='?do=news&p=$i' style='font-size:$font'>$i</a>";
+        }
+        echo "<a href='?do=news&p=$next'> > </a>";
+        ?>
         <div class="ct"><button>確定修改</button></div>
     </form>
-    <?php
-    echo "<a href='?do=news&p=$prev'> < </a>";
-    for ($i = 1; $i <= $pages; $i++) {
-        $font = ($now == $i) ? "32px" : "20px";
-        echo "<a href='?do=news&p=$i' style='font-size:$font'>$i</a>";
-    }
-    echo "<a href='?do=news&p=$next'> > </a>";
-    ?>
 </fieldset>
